@@ -1,5 +1,6 @@
 package at.die4fragezeichen.bullethell;
 
+import at.die4fragezeichen.bullethell.Windows.Window;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -14,7 +15,7 @@ public class InputController
     {
         pressedKeys.add(event.getCode());
 
-        for(WindowSignalHelper signal: Window.listeners)
+        for(Window signal: Window.listeners)
             signal.checkActive();
     }
 

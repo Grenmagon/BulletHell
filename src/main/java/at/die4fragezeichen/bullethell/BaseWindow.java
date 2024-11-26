@@ -1,9 +1,9 @@
 package at.die4fragezeichen.bullethell;
 
+import at.die4fragezeichen.bullethell.Windows.GameTest;
+import at.die4fragezeichen.bullethell.Windows.MenuTest;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,12 +17,9 @@ public class BaseWindow extends Application
     @Override
     public void start(Stage stage) throws IOException
     {
-        Window w = new Window(stage, "Menu");
-        w.activeKey = KeyCode.ESCAPE;
-        Window ww = new Window(stage, "Game");
-        ww.activeKey = KeyCode.NUMPAD1;
+        MenuTest w = new MenuTest(stage, "Menu");
+        GameTest ww = new GameTest(stage, "Game");
         w.setActive();
-        //ww.setActive();
         stage.show();
     }
 
