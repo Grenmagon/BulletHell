@@ -13,10 +13,10 @@ import java.util.List;
 public abstract class Window extends Pane
 {
     public static List<Window> listeners = new ArrayList<>();
-    protected Scene scene;
-    protected Stage stage;
-    protected String name;
-    protected KeyCode activeKey = null;
+    private Scene scene;
+    private Stage stage;
+    private String name;
+    private KeyCode activeKey = null;
     private boolean isActive = false;
 
     public Stage getStage()
