@@ -1,5 +1,7 @@
 package at.die4fragezeichen.bullethell;
 
+import java.util.Random;
+
 public class GameInformations
 {
     public static final double WINDOWSIZEX = 480;
@@ -8,6 +10,8 @@ public class GameInformations
     public static final int SEC = 1_000_000_000;
     public static final int FPS = 60;
     public static final int REFRESHRATE = SEC / FPS;
+
+    private static final Random random = new Random();
 
     public static int calculateKoord(double degree, double r, double[] coord)
     {
@@ -26,5 +30,10 @@ public class GameInformations
         else
             coord[1] = 0;
         return 0;
+    }
+
+    public static double getRandomInRange(double min, double max)
+    {
+        return min + (random.nextDouble() * (max-min));
     }
 }

@@ -1,5 +1,6 @@
 package at.die4fragezeichen.bullethell.Windows;
 
+import at.die4fragezeichen.bullethell.BaseWindow;
 import at.die4fragezeichen.bullethell.GameInformations;
 import at.die4fragezeichen.bullethell.InputController;
 import javafx.scene.Scene;
@@ -18,6 +19,7 @@ public abstract class Window extends Pane
     private String name;
     private KeyCode activeKey = null;
     private boolean isActive = false;
+    private BaseWindow base;
 
     public Stage getStage()
     {
@@ -44,15 +46,21 @@ public abstract class Window extends Pane
         return isActive;
     }
 
+    public BaseWindow getBase()
+    {
+        return base;
+    }
+
     private void addListener(Window signal)
     {
         listeners.add(signal);
     }
 
-    public Window(Stage stage, String name)
+    public Window(Stage stage, BaseWindow base, String name)
     {
         this.name = name;
         this.stage = stage;
+        this.base = base;
 
         scene = new Scene(this, GameInformations.WINDOWSIZEX, GameInformations.WINDOWSIZEY);
         addListener(this);

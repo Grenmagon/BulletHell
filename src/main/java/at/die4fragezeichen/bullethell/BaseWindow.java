@@ -14,12 +14,15 @@ public class BaseWindow extends Application
 
     private Scene scene;
 
+    public MenuTest mt;
+    public GameTest gt;
+
     @Override
     public void start(Stage stage) throws IOException
     {
-        MenuTest w = new MenuTest(stage, "Menu");
-        GameTest ww = new GameTest(stage, "Game");
-        w.setActive();
+        mt = new MenuTest(stage, this, "Menu");
+        gt = new GameTest(stage, this, "Game");
+        mt.setActive();
         stage.show();
     }
 

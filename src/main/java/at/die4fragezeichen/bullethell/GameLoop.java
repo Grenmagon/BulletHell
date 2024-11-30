@@ -1,5 +1,8 @@
 package at.die4fragezeichen.bullethell;
 
+import at.die4fragezeichen.bullethell.GameObjects.Entity;
+import at.die4fragezeichen.bullethell.GameObjects.GamePolygon;
+import at.die4fragezeichen.bullethell.GameObjects.Projectile;
 import javafx.animation.AnimationTimer;
 
 public abstract class GameLoop extends AnimationTimer
@@ -12,6 +15,10 @@ public abstract class GameLoop extends AnimationTimer
         if (now - lastTimeCalled > GameInformations.REFRESHRATE)
         {
             doFrame();
+            GamePolygon.doFrames();
+            Projectile.checkHits();
+            Entity.removeEntities();
+            GamePolygon.removePolygons();
             lastTimeCalled = now;
         }
     }
