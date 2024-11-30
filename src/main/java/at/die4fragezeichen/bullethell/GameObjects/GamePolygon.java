@@ -25,6 +25,56 @@ abstract class GamePolygon extends Polygon
         polygons.add(this);
     }
 
+    public double getxKoord()
+    {
+        return xKoord;
+    }
+
+    public void setxKoord(double xKoord)
+    {
+        this.xKoord = xKoord;
+    }
+
+    public double getyKoord()
+    {
+        return yKoord;
+    }
+
+    public void setyKoord(double yKoord)
+    {
+        this.yKoord = yKoord;
+    }
+
+    public double getAlignmentDegrees()
+    {
+        return alignmentDegrees;
+    }
+
+    public void setAlignmentDegrees(double alignmentDegrees)
+    {
+        this.alignmentDegrees = alignmentDegrees;
+    }
+
+    public double getMovementDegrees()
+    {
+        return movementDegrees;
+    }
+
+    public void setMovementDegrees(double movementDegrees)
+    {
+        this.movementDegrees = movementDegrees;
+    }
+
+    public double getSpeed()
+    {
+        return speed;
+    }
+
+    public void setSpeed(double speed)
+    {
+        this.speed = speed;
+    }
+
     private void addToPane(Pane parentPane)
     {
         parentPane.getChildren().add(this);
@@ -44,7 +94,27 @@ abstract class GamePolygon extends Polygon
     {
         doMove();
         //TODO das bewegen im Frame selbst
+        calculateMove();
+        moveObject();
     }
+
+    private void calculateMove()
+    {
+        double[] coord = new double[2];
+
+        if (GameInformations.calculateKoord(getMovementDegrees(), getSpeed(), coord) == 0)
+        {
+            setxKoord(getxKoord() - coord[0]);
+            setyKoord(getyKoord() + coord[1]);
+        }
+    }
+
+    protected void moveObject()
+    {
+        setTranslateX(xKoord);
+        setTranslateY(yKoord);
+    }
+
 
     //Zum einstellen des Vecotors für die Bewegung im Frame
     abstract protected void doMove();
@@ -56,8 +126,6 @@ abstract class GamePolygon extends Polygon
 
     /*
     TODO Was machen alles Polygon (Player + Gegner)
-    Move
-    CalcMove
     spawn projectil
      */
 
