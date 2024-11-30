@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-abstract class GamePolygon extends Polygon
+public abstract class GamePolygon extends Polygon
 {
     private double xKoord = 0;
     private double yKoord = 0;
@@ -93,7 +93,6 @@ abstract class GamePolygon extends Polygon
     private void setMove()
     {
         doMove();
-        //TODO das bewegen im Frame selbst
         calculateMove();
         moveObject();
     }
@@ -115,7 +114,6 @@ abstract class GamePolygon extends Polygon
         setTranslateY(yKoord);
     }
 
-
     //Zum einstellen des Vecotors für die Bewegung im Frame
     abstract protected void doMove();
 
@@ -123,6 +121,16 @@ abstract class GamePolygon extends Polygon
     {
         return (double) framesAlive / GameInformations.FPS;
     }
+
+    public void setRemovePolygon()
+    {
+        doRemovePolygon();
+        Pane parent = (Pane) this.getParent();
+        parent.getChildren().remove(this);
+        polygons.remove(this);
+    }
+
+    abstract protected void doRemovePolygon();
 
     /*
     TODO Was machen alles Polygon (Player + Gegner)

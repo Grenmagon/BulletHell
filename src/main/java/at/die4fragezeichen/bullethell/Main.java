@@ -6,5 +6,5 @@ public class Main
     {
         BaseWindow.go(args);
     }
-    //KATHI!
+
 }

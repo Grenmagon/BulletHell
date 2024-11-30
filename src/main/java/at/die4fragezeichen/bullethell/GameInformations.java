@@ -17,8 +17,14 @@ public class GameInformations
             return 1;
 
         double bogenmas = degree * (Math.PI / 180);
-        coord[0] = r * Math.sin(bogenmas);
-        coord[1] = r * Math.cos(bogenmas);
+        if (degree % 180 != 0)
+            coord[0] = r * Math.sin(bogenmas);
+        else
+            coord[0] = 0;
+        if ((degree + 90) % 180 != 0)
+            coord[1] = r * Math.cos(bogenmas);
+        else
+            coord[1] = 0;
         return 0;
     }
 }
