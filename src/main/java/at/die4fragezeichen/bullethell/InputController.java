@@ -1,3 +1,4 @@
+//checkt welche Tasten sind gedrückt derzeit
 package at.die4fragezeichen.bullethell;
 
 import at.die4fragezeichen.bullethell.Windows.Window;
@@ -9,8 +10,9 @@ import java.util.Set;
 
 public class InputController
 {
-    private static final Set<KeyCode> pressedKeys = new HashSet<>();
+    private static final Set<KeyCode> pressedKeys = new HashSet<>(); // statische Liste, welche Tasten sind derzeit gedrückt
 
+    //wenn Key gedrückt wird>> fügt die Taste der Liste hinzu und Fensterobjekt werden durchgegangen, checkaktive wird gemeldet, dass eine gewisse Taste gedrückt wurde.
     public static void addPressedKey(KeyEvent event)
     {
         pressedKeys.add(event.getCode());
@@ -18,7 +20,7 @@ public class InputController
         for(Window signal: Window.listeners)
             signal.checkActive();
     }
-
+// wenn Key losgelassen wird>> Taste wird aus Liste entfernt
     public static void removePressedKey(KeyEvent event)
     {
         pressedKeys.remove(event.getCode());

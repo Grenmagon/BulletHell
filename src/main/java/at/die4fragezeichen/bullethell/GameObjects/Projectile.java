@@ -1,3 +1,4 @@
+//erben von GamePolygon
 package at.die4fragezeichen.bullethell.GameObjects;
 
 import javafx.geometry.Bounds;
@@ -9,11 +10,11 @@ import java.util.List;
 
 public abstract class Projectile extends GamePolygon
 {
-    private int damage = 0;
-    private GamePolygon spawner;
-    public static List<Projectile> projectiles = new ArrayList<>();
+    private int damage = 0; // Schaden welcher vom Projektil erzeug wird
+    private GamePolygon spawner; // wer hat den Schuss abgefeuert
+    public static List<Projectile> projectiles = new ArrayList<>(); // statische Liste die alle Projektile auflistet
 
-
+// richtung und geschwindigkeit die das Geschoss haben soll- wird beim erzeugen des Porjektils eingestellt
     public Projectile(GamePolygon spawner, double direction, double speed)
     {
         super((Pane)spawner.getParent());
@@ -24,12 +25,14 @@ public abstract class Projectile extends GamePolygon
         setAligment();
         projectiles.add(this);
 
+        // projektil wird Mittig von dem Objekt welches das Projektil abgefeuert hat gespawnt
         Bounds spawnBounds = spawner.getBoundsInParent();
         setxKoord((spawnBounds.getMinX()+spawnBounds.getMaxX())/2);
         setyKoord((spawnBounds.getMinY()+spawnBounds.getMaxY())/2);
         moveObject();
     }
 
+    // geht alle Projektile durch und alle Polygone und checkt ob ein Projektil ein Polygon trifft
     public static void checkHits()
     {
         for (Projectile p: projectiles)
@@ -38,7 +41,7 @@ public abstract class Projectile extends GamePolygon
             {
                 if (p.getBoundsInParent().intersects( gp.getBoundsInParent() ))
                 {
-                    gp.doHit(p);
+                    gp.doHit(p); // es muss definiert werden in doHit ob mich der treffer interessiert und was getan werden muss wenn getrofen wurde
 
                 }
             }
@@ -63,6 +66,7 @@ public abstract class Projectile extends GamePolygon
         this.spawner = spawner;
     }
 
+    // abtrakte Methoden
     @Override
     protected void doFrame()
     {
@@ -88,18 +92,21 @@ public abstract class Projectile extends GamePolygon
         projectiles.remove(this);
     }
 
+    // was muss passieren wenn Projektil was trifft
     @Override
     protected void doHit(Projectile projectile)
     {
 
     }
 
+    // wenn Projektil mit der Außenwelt kollidiert wird es entfernt
     @Override
     protected void doWorldCollision()
     {
         setRemovePolygon();
     }
 
+    // was möchte das Projektil machen, wenn es bereits getroffen hat- removen oder soll es weiter gehen ?
     abstract protected void setHitEntity(GamePolygon polygon);
 
 

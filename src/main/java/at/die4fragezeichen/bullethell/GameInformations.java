@@ -1,3 +1,4 @@
+// alle Informationen werden hier definiert und gesammelt/ Hilfsmethoden werden implementiert
 package at.die4fragezeichen.bullethell;
 
 import java.util.Random;

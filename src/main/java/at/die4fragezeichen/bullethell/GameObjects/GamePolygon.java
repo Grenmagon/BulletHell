@@ -1,3 +1,5 @@
+//erbt von Polygon dies ist ein Objekt/ eine Form die anhand von Koordinaten Objekte zeichnet
+// diese Klasse hat generelle Methoden die die Objekte haben sollen und erzeugt die Liste aller Objekte
 package at.die4fragezeichen.bullethell.GameObjects;
 
 import at.die4fragezeichen.bullethell.GameInformations;
@@ -12,6 +14,7 @@ import java.util.Set;
 
 public abstract class GamePolygon extends Polygon
 {
+    // wo ist das Objekt gerade, wo soll es hin und wie soll es dorthin gelangen
     private double xKoord = 0;
     private double yKoord = 0;
     private double alignmentDegrees = 0;
@@ -22,7 +25,7 @@ public abstract class GamePolygon extends Polygon
 
     public int id = 0;
 
-    public static List<GamePolygon> polygons = new ArrayList<>();
+    public static List<GamePolygon> polygons = new ArrayList<>(); // statische Liste für alle Objekte im Spiel
 
     public static void doFrames()
     {
@@ -45,13 +48,13 @@ public abstract class GamePolygon extends Polygon
             }
         }
     }
-
+// Konstruktor muss eine Pane übergeben werden zum Bsp das Spielfenster
     public GamePolygon(Pane pane)
     {
         addToPane(pane);
         polygons.add(this);
 
-        id = (int) GameInformations.getRandomInRange(1000,9999);
+        id = (int) GameInformations.getRandomInRange(1000,9999); // eindeutige ID wird zugewiesen
     }
 
     public double getxKoord()
@@ -99,27 +102,30 @@ public abstract class GamePolygon extends Polygon
         this.speed = speed;
     }
 
+    // fügt sich selbst zur Ebene hinzu
     private void addToPane(Pane parentPane)
     {
         parentPane.getChildren().add(this);
     }
 
+    //wir automatisch jedes Frame aufgerufen
     public void setFrame()
     {
-        doFrame();
+        doFrame(); // was wird getan
         setMove();
-        checkWorldCollision();
+        checkWorldCollision(); // werden die Wände vom Fenster getroffen
         framesAlive++;
     }
     //Was pro Frame gemacht werden soll (ausser movement)
     abstract protected void doFrame();
-
+// wenn Bewegung gemacht werden soll
     private void setMove()
     {
-        doMove();
+        doMove(); // wie möchte ich mich bewegen
         calculateMove();
-        moveObject();
+        moveObject();  // wo ist das Objekt jetzt neu
     }
+    // es wird berechnet wie die x und y Koordinaten gesetzt werden müssen anhand der eingestellten move Parameter
     private void calculateMove()
     {
         double[] coord = new double[2];
@@ -137,19 +143,21 @@ public abstract class GamePolygon extends Polygon
     }
     //Zum einstellen des Vecotors für die Bewegung im Frame
     abstract protected void doMove();
-
+// Ausrichtung von Objekt wird gesetzt
     public void setAligment()
     {
         doAligment();
         setRotate(getAlignmentDegrees());
     }
+    // was soll passierren wenns gedreht ist?
     abstract protected void doAligment();
 
+// rechnet aus wieviele Sekunden Frame aktiv ist
     public double getSecsAlive()
     {
         return (double) framesAlive / GameInformations.FPS;
     }
-
+// soll Polgon entfent werden?
     protected boolean getRemovePolygon()
     {
         return removePolygon;
@@ -159,19 +167,20 @@ public abstract class GamePolygon extends Polygon
         removePolygon = true;
     }
 
+    //iteratoren sind nötig um das removen geordnet und richtig durchzuführen, Polygon wird entfernt
     private void removePolygon(Iterator<GamePolygon> iterator)
     {
-        doRemovePolygon();
-        Pane parent = (Pane) getParent();
+        doRemovePolygon(); // soll Objekt was tun wenn es removed wird
+        Pane parent = (Pane) getParent(); // wird aus ebene entfernt
         parent.getChildren().remove(this);
         //polygons.remove(this);
-        iterator.remove();
+        iterator.remove(); // wird aus allen listen entfernt
     }
     abstract protected void doRemovePolygon();
 
     //Wenn von einem Projectil getroffen
     abstract protected void doHit(Projectile projectile);
-
+// checkt, wird das Fenster verlassen ?
     protected boolean leaveParent()
     {
         return leaveRight() || leaveLeft() || leaveUp() ||leaveDown();
@@ -193,6 +202,7 @@ public abstract class GamePolygon extends Polygon
         return getBoundsInParent().getMaxY() > ((Pane) getParent()).getHeight();
     }
 
+    // checkt ob Welt kollidiert wurde
     private void checkWorldCollision()
     {
         Bounds parent = getParent().getBoundsInParent();

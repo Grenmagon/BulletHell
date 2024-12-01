@@ -1,3 +1,4 @@
+//Gegner und Spieler
 package at.die4fragezeichen.bullethell.GameObjects;
 
 import javafx.scene.layout.Pane;
@@ -8,9 +9,11 @@ import java.util.List;
 
 public abstract class Entity extends GamePolygon
 {
-    private int life = 0;
+    private int life = 0; // Lebenspunkte
 
-    public static List<Entity> entities = new ArrayList<>();
+    public static List<Entity> entities = new ArrayList<>(); // statische Liste
+
+    // Objekte werden überall entfernt wenn sie Sterben
     public static void removeEntities()
     {
         Iterator<Entity> iterator = entities.iterator();
@@ -24,6 +27,7 @@ public abstract class Entity extends GamePolygon
         }
     }
 
+    //Leben gleich beim erstellen einstellen
     public Entity(Pane pane, int life)
     {
         super(pane);
@@ -42,6 +46,7 @@ public abstract class Entity extends GamePolygon
         return life;
     }
 
+    // Methode, wenn Projektil mich trifft
     public void setLoseLife(Projectile p)
     {
         int damage = p.getDamage();
@@ -50,15 +55,18 @@ public abstract class Entity extends GamePolygon
         life -= damage;
         System.out.println(" und habe noch " + getLife());
         if (life <= 0)
-            setDeath();
+            setDeath(); // entity ist gestorben
     }
+    // was soll getan werden wenn ich leben verliere?
     abstract protected void doLoseLife();
 
+    // wenn ich gestorben bin entferne mich aus den Listen etc. und mache noch die in doDeath definierten Sachen
     private void setDeath()
     {
         doDeath();
         setRemovePolygon();
     }
+    // was soll getan werden wenn ich sterbe?
     abstract protected void doDeath();
 
 }
