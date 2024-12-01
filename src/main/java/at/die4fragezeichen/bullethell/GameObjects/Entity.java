@@ -41,6 +41,10 @@ public abstract class Entity extends GamePolygon
     }
 
 
+    public void setLife(int life)
+    {
+        this.life = life;
+    }
     public int getLife()
     {
         return life;

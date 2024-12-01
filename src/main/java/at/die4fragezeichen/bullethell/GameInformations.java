@@ -5,12 +5,21 @@ import java.util.Random;
 
 public class GameInformations
 {
+    enum Difficult
+    {
+        Easy,
+        Medium,
+        Hard
+    }
+
     public static final double WINDOWSIZEX = 480;
     public static final double WINDOWSIZEY = 480;
 
     public static final int SEC = 1_000_000_000;
     public static final int FPS = 60;
     public static final int REFRESHRATE = SEC / FPS;
+
+    public static Difficult difficult = Difficult.Easy;
 
     private static final Random random = new Random();
 
