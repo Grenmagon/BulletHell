@@ -54,7 +54,7 @@ public abstract class GamePolygon extends Polygon
         addToPane(pane);
         polygons.add(this);
 
-        id = (int) GameInformations.getRandomInRange(1000,9999); // eindeutige ID wird zugewiesen
+        id = (int) GameInformations.getRandomInRange(1000,9999); // "eindeutige" ID wird zugewiesen
     }
 
     public double getxKoord()
@@ -123,7 +123,7 @@ public abstract class GamePolygon extends Polygon
     {
         doMove(); // wie möchte ich mich bewegen
         calculateMove();
-        moveObject();  // wo ist das Objekt jetzt neu
+        moveObject();  // setzt das Object zu den erechneten Koordinaten
     }
     // es wird berechnet wie die x und y Koordinaten gesetzt werden müssen anhand der eingestellten move Parameter
     private void calculateMove()
@@ -173,7 +173,6 @@ public abstract class GamePolygon extends Polygon
         doRemovePolygon(); // soll Objekt was tun wenn es removed wird
         Pane parent = (Pane) getParent(); // wird aus ebene entfernt
         parent.getChildren().remove(this);
-        //polygons.remove(this);
         iterator.remove(); // wird aus allen listen entfernt
     }
     abstract protected void doRemovePolygon();
@@ -202,12 +201,9 @@ public abstract class GamePolygon extends Polygon
         return getBoundsInParent().getMaxY() > ((Pane) getParent()).getHeight();
     }
 
-    // checkt ob Welt kollidiert wurde
+    // checkt ob Welt verlassen wird und ruft die dazu passende Methode auf
     private void checkWorldCollision()
     {
-        Bounds parent = getParent().getBoundsInParent();
-        Bounds bounds = getBoundsInParent();
-        //if (bounds.intersects(parent))
         if (leaveParent())
             doWorldCollision();
     }

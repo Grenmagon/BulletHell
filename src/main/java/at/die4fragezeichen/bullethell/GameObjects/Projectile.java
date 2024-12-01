@@ -1,4 +1,4 @@
-//erben von GamePolygon
+
 package at.die4fragezeichen.bullethell.GameObjects;
 
 import javafx.geometry.Bounds;
@@ -7,7 +7,7 @@ import javafx.scene.layout.Pane;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
+//erben von GamePolygon
 public abstract class Projectile extends GamePolygon
 {
     private int damage = 0; // Schaden welcher vom Projektil erzeug wird

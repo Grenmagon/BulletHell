@@ -81,7 +81,7 @@ public abstract class Window extends Pane
         }
     }
 
-    // Setzt die Fenster aktiv, welce aktiv sein sollen, per Definition
+    // Setzt die Fenster aktiv, welche aktiv sein sollen, per Definition
     public void setActive()
     {
         isActive = true;
