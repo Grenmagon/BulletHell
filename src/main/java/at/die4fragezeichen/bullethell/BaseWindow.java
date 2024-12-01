@@ -2,6 +2,7 @@
 package at.die4fragezeichen.bullethell;
 
 
+import at.die4fragezeichen.bullethell.Windows.GameWindow;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -15,6 +16,7 @@ public class BaseWindow extends Application
     private Scene scene;
 // Objekte werden erzeugt für alle Windows, welche benötigt werden
     //public MenuTest mt;
+    public GameWindow gameWindow;
 
 
     // start muss implementiert werden, Stage ist die höchste Ebene
@@ -23,6 +25,8 @@ public class BaseWindow extends Application
     {
         //mt = new MenuTest(stage, this, "Menu");
         //mt.setActive(); // Szene wird aktiv geschalten
+        gameWindow = new GameWindow(stage,this,"GameWindow");
+        gameWindow.setActive();
         stage.show();
     }
 
