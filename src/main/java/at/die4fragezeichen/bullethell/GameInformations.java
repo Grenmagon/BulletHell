@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class GameInformations
 {
-    enum Difficult
+    public enum Difficult
     {
         Easy,
         Medium,
