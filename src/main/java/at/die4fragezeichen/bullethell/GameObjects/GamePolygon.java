@@ -130,7 +130,8 @@ public abstract class GamePolygon extends Polygon
     {
         double[] coord = new double[2];
 
-        if (GameInformations.calculateKoord(getMovementDegrees(), getSpeed(), coord) == 0)
+        double frameSpeed = getSpeed()/GameInformations.FPS;
+        if (GameInformations.calculateKoord(getMovementDegrees(), frameSpeed, coord) == 0)
         {
             setxKoord(getxKoord() - coord[0]);
             setyKoord(getyKoord() + coord[1]);

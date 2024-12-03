@@ -17,7 +17,7 @@ public class GameInformations
 
     public static final int SEC = 1_000_000_000;
     public static final int FPS = 60;
-    public static final int REFRESHRATE = SEC / FPS;
+    public static final int REFRESHRATE =  SEC / FPS;
 
     public static Difficult difficult = Difficult.Easy;
 
