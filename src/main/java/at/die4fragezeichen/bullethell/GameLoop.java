@@ -9,18 +9,20 @@ import javafx.animation.AnimationTimer;
 public abstract class GameLoop extends AnimationTimer
 {
     long lastTimeCalled = 0; // wann wurde es zuletzt aufgerufen
-
+    int frameCount = 0;
+    long sec = 0;
     @Override
     public void handle(long now) // wieviele nanosecunden seit animationtimer aufgruf vergangen sind
     {
-        if (now - lastTimeCalled > GameInformations.REFRESHRATE)
+        if ((now - lastTimeCalled) > GameInformations.REFRESHRATE)
         {
+
             doFrame();
             GamePolygon.doFrames();
             Projectile.checkHits();
             Entity.removeEntities();
             GamePolygon.removePolygons();
-            lastTimeCalled = now;
+            lastTimeCalled = now - ((now-lastTimeCalled) - GameInformations.REFRESHRATE);
         }
     }
     abstract public void doFrame();
