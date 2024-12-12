@@ -26,11 +26,11 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'at.die4fragezeichen.bullethell'
-    mainClass = 'at.die4fragezeichen.bullethell.HelloApplication'
+    mainClass = 'at.die4fragezeichen.bullethell.BaseWindow'
 }
 
 javafx {
-    version = '17.0.6'
+    version = '23'
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
