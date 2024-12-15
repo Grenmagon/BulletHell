@@ -12,6 +12,8 @@ public class GameInformations
         Hard
     }
 
+    public static int highscore = 0;
+
     public static final double WINDOWSIZEX = 480;
     public static final double WINDOWSIZEY = 480;
 

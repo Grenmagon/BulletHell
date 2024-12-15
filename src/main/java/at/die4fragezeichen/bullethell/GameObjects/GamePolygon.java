@@ -159,7 +159,7 @@ public abstract class GamePolygon extends Polygon
         return (double) framesAlive / GameInformations.FPS;
     }
 // soll Polgon entfent werden?
-    protected boolean getRemovePolygon()
+    public boolean getRemovePolygon()
     {
         return removePolygon;
     }
