@@ -122,7 +122,7 @@ public class GameWindow extends Window{
 
         }
         if(GameInformations.difficult == GameInformations.Difficult.Hard) {
-            if(wave==1){
+            if(wave==0){
                 enemies.add(new TestGegner(this));
                 enemies.get(1).setxKoord(GameInformations.WINDOWSIZEX/2);
                 enemies.get(1).setyKoord(40);
