@@ -1,37 +1,53 @@
 package at.die4fragezeichen.bullethell.GameObjects;
 
 import at.die4fragezeichen.bullethell.GameInformations;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Polygon;
 
 public class TestGegner extends Entity {
 
     private double sinceMoveChange = 0;
     private double sinceShot = 0;
     private double timeSinceHit = 0;
+    Image ship = new Image(getClass().getResource("/icons/mute.png").toString());
+    ImagePattern pattern = new ImagePattern(ship, 0, 0, 0.5, 0.5, true);
 
     public TestGegner(Pane pane) {
         super(pane, 5);
-        getPoints().addAll(
 
+        getPoints().addAll(
+        /*
                 //ursprüngl. Koordinaten -> Pfeile (Gegner) schauen nach oben
+
                 0.0, -10.0,
                 -10.0, 10.0,
                 0.0, 5.0,
                 10.0, 10.0
 
 
-                /* Um 90° nach links gedreht
+
+                 Um 90° nach links gedreht
 
                 10.0, 10.0,
                 5.0, 0.0,
                 10.0, -10.0,
                 -10.0, 0.0
 
-                */
+
+        */
+                -50.0,40.0,
+                0.0,60.0,
+                50.0,40.0,
+                0.0,-60.0
 
         );
-        setFill(Color.BLUE);
+
+        System.out.println("Load Ship");
+
+        setFill(pattern);
         setStroke(Color.BLACK); // Farbe für den Rahmen bzw. das Wireframe
 
         setxKoord(GameInformations.WINDOWSIZEX/2); // Position Gegner auf X-Achse (Mitte weil /2)
