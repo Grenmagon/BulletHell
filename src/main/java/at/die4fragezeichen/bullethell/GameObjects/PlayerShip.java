@@ -130,7 +130,7 @@ public class PlayerShip extends Entity{
     protected void doRemovePolygon() {
         //Welches auch immer, vermutlich Highscore anzeige und neues Start Menü
         System.out.println("Highscore: " +GameInformations.highscore);
-        //Window.setActive(""); // das "Endfenster" einblenden
+        Window.setActive("StartWindow"); // das "Endfenster" einblenden
 
     }
 
@@ -162,5 +162,9 @@ public class PlayerShip extends Entity{
 
         moveObject();
 
+    }
+
+    public int getPlayerLife() {
+        return playerLife;
     }
 }

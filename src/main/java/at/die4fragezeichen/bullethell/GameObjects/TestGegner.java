@@ -69,6 +69,7 @@ public class TestGegner extends Entity {
         // eher dazu verwenden, um bspw. Raumschiff blinken zu lassen, wenn es getroffen wird
         setFill(Color.BLACK);
         timeSinceHit = getSecsAlive();
+        GameInformations.highscore++;
 
         if (getLife() > 0) {
             System.out.println("Mayday! Mayday! Ich bin getroffen! Ich habe noch: " + getLife() + " Leben!");
