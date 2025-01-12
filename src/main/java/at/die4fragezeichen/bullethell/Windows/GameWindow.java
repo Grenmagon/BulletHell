@@ -92,7 +92,7 @@ public class GameWindow extends Window{
                 levelSystem();
                 highscoreLabel.setText("Highscore: "+GameInformations.highscore);
                 levelLabel.setText("Level: "+GameInformations.difficult+"/ Wave: "+wave);
-                playerLife.setText("Lifes: "+firstPlayer.getPlayerLife());
+                playerLife.setText("Lifes: "+firstPlayer.getLife());
             }
         };
     }
