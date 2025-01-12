@@ -26,6 +26,7 @@ public abstract class GamePolygon extends Polygon
     public int id = 0;
 
     public static List<GamePolygon> polygons = new ArrayList<>(); // statische Liste für alle Objekte im Spiel
+    private List<Projectile> projectileHits = new ArrayList<>();
 
     public static void doFrames()
     {
@@ -115,7 +116,16 @@ public abstract class GamePolygon extends Polygon
         setMove();
         checkWorldCollision(); // werden die Wände vom Fenster getroffen
         framesAlive++;
+
+        Iterator<Projectile> it = projectileHits.iterator();
+        while (it.hasNext())
+        {
+            Projectile p = it.next();
+            if (p.getRemovePolygon())
+                it.remove();
+        }
     }
+
     //Was pro Frame gemacht werden soll (ausser movement)
     abstract protected void doFrame();
 // wenn Bewegung gemacht werden soll
@@ -179,6 +189,13 @@ public abstract class GamePolygon extends Polygon
     abstract protected void doRemovePolygon();
 
     //Wenn von einem Projectil getroffen
+    protected void setHit(Projectile projectile)
+    {
+        if (projectileHits.contains(projectile))
+            return;
+        doHit(projectile);
+        projectileHits.add(projectile);
+    }
     abstract protected void doHit(Projectile projectile);
 // checkt, wird das Fenster verlassen ?
     protected boolean leaveParent()

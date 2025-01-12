@@ -41,7 +41,7 @@ public abstract class Projectile extends GamePolygon
             {
                 if (p.getBoundsInParent().intersects( gp.getBoundsInParent() ))
                 {
-                    gp.doHit(p); // es muss definiert werden in doHit ob mich der treffer interessiert und was getan werden muss wenn getrofen wurde
+                    gp.setHit(p); // es muss definiert werden in doHit ob mich der treffer interessiert und was getan werden muss wenn getrofen wurde
 
                 }
             }
