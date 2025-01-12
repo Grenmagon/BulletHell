@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 
 public class PlayerShip extends Entity{
     private double baseSpeed = 0;
-    private int playerLife = 0;
+
     private double timeSinceShot = 0;
     private final double FIRERATE = 0.5;
     private final double HITREGTIME = 0.2;
@@ -22,7 +22,7 @@ public class PlayerShip extends Entity{
         setShipToDifficulty();
 
         baseSpeed=getSpeed();
-        playerLife=getLife();
+
 
         getPoints().addAll(
                 30.0,-100.0, // Koordinate 1 Ecke
@@ -130,7 +130,7 @@ public class PlayerShip extends Entity{
     protected void doRemovePolygon() {
         //Welches auch immer, vermutlich Highscore anzeige und neues Start Menü
         System.out.println("Highscore: " +GameInformations.highscore);
-        //Window.setActive(""); // das "Endfenster" einblenden
+        Window.setActive("StartWindow"); // das "Endfenster" einblenden
 
     }
 
@@ -163,4 +163,5 @@ public class PlayerShip extends Entity{
         moveObject();
 
     }
+
 }

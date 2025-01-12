@@ -7,6 +7,10 @@ import at.die4fragezeichen.bullethell.GameObjects.Entity;
 import at.die4fragezeichen.bullethell.GameObjects.PlayerProjectile;
 import at.die4fragezeichen.bullethell.GameObjects.PlayerShip;
 import at.die4fragezeichen.bullethell.GameObjects.TestGegner;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
@@ -30,13 +34,65 @@ public class GameWindow extends Window{
 
         enemies= new ArrayList<>();
 
+        //highscore Label
+        VBox layoutHighscore = new VBox();
+        layoutHighscore.setAlignment(Pos.TOP_RIGHT);
+        layoutHighscore.setPadding(new Insets(20));
+
+        layoutHighscore.setPrefWidth(GameInformations.WINDOWSIZEX);
+        layoutHighscore.setPrefHeight(GameInformations.WINDOWSIZEY);
+
+        Label highscoreLabel = new Label("Highscore: "+GameInformations.highscore);
+        highscoreLabel.setStyle("-fx-font-family: 'Horizon'; -fx-font-size: 20px;");
+
+        layoutHighscore.getChildren().add(highscoreLabel);
+        this.getChildren().add(layoutHighscore);
+
+        //playername Label
+        VBox layoutPlayername= new VBox();
+        layoutPlayername.setAlignment(Pos.BOTTOM_RIGHT);
+
+        layoutPlayername.setPrefWidth(GameInformations.WINDOWSIZEX);
+        layoutPlayername.setPrefHeight(GameInformations.WINDOWSIZEY);
+
+        Label playernameLabel = new Label("playername: " +GameInformations.playername);
+        playernameLabel.setStyle("-fx-font-family: 'Horizon'; -fx-font-size: 20px;");
+        playernameLabel.setMinWidth(210);
+
+        layoutPlayername.getChildren().add(playernameLabel);
+        this.getChildren().add(layoutPlayername);
+
+        //wave and Level Label
+        VBox layoutLevel = new VBox();
+        layoutLevel.setAlignment(Pos.BOTTOM_LEFT);
+
+        layoutLevel.setPrefWidth(GameInformations.WINDOWSIZEX);
+        layoutLevel.setPrefHeight(GameInformations.WINDOWSIZEY);
+
+        Label levelLabel = new Label("Level: "+GameInformations.difficult+"/ Wave: "+wave);
+        levelLabel.setStyle("-fx-font-family: 'Horizon'; -fx-font-size: 20px;");
+
+        layoutLevel.getChildren().add(levelLabel);
+        this.getChildren().add(layoutLevel);
+
+        //playership life
+        Label playerLife = new Label();
+        this.getChildren().add(playerLife);
+        playerLife.setTranslateX(20);
+        playerLife.setTranslateY(20);
+        playerLife.setStyle("-fx-font-family: 'Horizon'; -fx-font-size: 20px;");
+
         loop = new GameLoop() {
+
 
             @Override
             public void doFrame() {
                 checkEnemies();
                 //System.out.println("Enemies"+ enemies.size());
                 levelSystem();
+                highscoreLabel.setText("Highscore: "+GameInformations.highscore);
+                levelLabel.setText("Level: "+GameInformations.difficult+"/ Wave: "+wave);
+                playerLife.setText("Lifes: "+firstPlayer.getLife());
             }
         };
     }
