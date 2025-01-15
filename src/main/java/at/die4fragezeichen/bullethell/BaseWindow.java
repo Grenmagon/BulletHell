@@ -2,9 +2,7 @@
 package at.die4fragezeichen.bullethell;
 
 
-import at.die4fragezeichen.bullethell.Windows.EnterPlayerNameWindow;
-import at.die4fragezeichen.bullethell.Windows.GameWindow;
-import at.die4fragezeichen.bullethell.Windows.StartWindow;
+import at.die4fragezeichen.bullethell.Windows.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -21,6 +19,8 @@ public class BaseWindow extends Application {
     public StartWindow startWindow;
     public GameWindow gameWindow;
     public EnterPlayerNameWindow enterPlayerNameWindow;
+    public FinalWindow finalWindow;
+    public DifficultySelectionWindow difficultySelectionWindow;
 
 
     // start muss implementiert werden, Stage ist die höchste Ebene
@@ -35,8 +35,10 @@ public class BaseWindow extends Application {
         //mt = new MenuTest(stage, this, "Menu");
         //mt.setActive(); // Szene wird aktiv geschalten
         startWindow = new StartWindow(stage, this, "StartWindow");
-        gameWindow = new GameWindow(stage, this, "GameWindow");
+        difficultySelectionWindow = new DifficultySelectionWindow(stage,this, "DifficultySelectionWindow");
         enterPlayerNameWindow = new EnterPlayerNameWindow(stage, this, "EnterPlayerNameWindow");
+        gameWindow = new GameWindow(stage, this, "GameWindow");
+        finalWindow = new FinalWindow(stage,this,"FinalWindow");
         //gameWindow.setActive();
         startWindow.setActive();
         stage.show();

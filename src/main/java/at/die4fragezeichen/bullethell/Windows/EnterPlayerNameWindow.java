@@ -15,6 +15,7 @@ public class EnterPlayerNameWindow extends Window {
     private Button confirmButton;
     private Label feedbackLabel;
 
+
     public EnterPlayerNameWindow(Stage stage, BaseWindow base, String name) {
         super(stage, base, name);
 
@@ -57,7 +58,9 @@ public class EnterPlayerNameWindow extends Window {
             System.out.println("Player name is too short: " + playerName); // Отладочный вывод
         } else {
             feedbackLabel.setText(""); // Очищаем метку при успешном вводе
-            System.out.println("Player name is valid: " + playerName); // Отладочный вывод
+            System.out.println("Player name is valid: " + playerName);// Отладочный вывод
+            GameInformations.playername = playerName;
+            System.out.println("Current player name : " + GameInformations.playername);
 
             // Переход на стартовое окно
             try {

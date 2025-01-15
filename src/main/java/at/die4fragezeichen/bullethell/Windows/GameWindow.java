@@ -184,7 +184,7 @@ public class GameWindow extends Window{
                 enemies.get(1).setyKoord(40);
             }
             else{
-                //Window.setActive(""); // das "Endfenster" einblenden
+                Window.setActive("FinalWindow"); // das "Endfenster" einblenden
                 System.out.println("Level Hard geschafft ");
             }
 

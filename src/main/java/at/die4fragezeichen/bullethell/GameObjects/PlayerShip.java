@@ -81,8 +81,7 @@ public class PlayerShip extends Entity{
 
     @Override
     protected void doDeath() {
-
-
+     Window.setActive("FinalWindow");
 
     }
 
