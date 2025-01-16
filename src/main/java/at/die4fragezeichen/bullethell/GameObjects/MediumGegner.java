@@ -7,34 +7,24 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Polygon;
 
-public class TestGegner extends Entity {
+public class MediumGegner extends Entity{
 
     private double sinceMoveChange = 0;
     private double sinceShot = 0;
     private double timeSinceHit = 0;
-    Image ship = new Image(getClass().getResource("/icons/Bossgegner.png").toString());
-    ImagePattern pattern = new ImagePattern(ship, -0.63025, 1.05, 0.8105, 1.025, true);
+    Image ship = new Image(getClass().getResource("/icons/Mediumgegner.png").toString());
+    ImagePattern pattern = new ImagePattern(ship, -1, 1, 1, 1, true);
 
-    public TestGegner(Pane pane) {
-        super(pane, 15);
+    public MediumGegner(Pane pane, int life) {
+        super(pane, 7);
 
         getPoints().addAll(
-        /*
-                //ursprüngl. Koordinaten -> Pfeile (Gegner) schauen nach oben
 
-                0.0, -10.0,
-                -10.0, 10.0,
-                0.0, 5.0,
-                10.0, 10.0
-
-        */
-                -130.0, 40.0,
-                130.0, 40.0,
-                130.0, 220.0,
-                -130.0, 220.0
-
+                5.0, -15.0,
+                -15.0, 15.0,
+                5.0, 10.0,
+                15.0, 15.0
         );
-
         System.out.println("Load Ship!");
 
         setFill(pattern);
@@ -55,32 +45,20 @@ public class TestGegner extends Entity {
 
     @Override
     protected void doLoseLife() {
-        // eher dazu verwenden, um bspw. Raumschiff blinken zu lassen, wenn es getroffen wird
+
         setFill(Color.BLACK);
         timeSinceHit = getSecsAlive();
         GameInformations.highscore++;
-
-        if (getLife() > 0) {
-            System.out.println("Mayday! Mayday! Ich bin getroffen! Ich habe noch: " + getLife() + " Leben!");
-        } else {
-            System.out.println("AAAARRRGH!!");
-        }
     }
 
     @Override
     protected void doDeath() {
-        // kann ignoriert werden
+
     }
 
     @Override
     protected void doFrame() {
-        /* wird jedes Frame aufgerufen
-        idF wird alle 3 sec ein Schuss pro Objekt abgegeben - kann mit Schwierigkeit getunet werden
 
-           if (getSecsAlive() % 3 == 0) {
-            PlayerProjectile e = new PlayerProjectile(this, 180, 50);
-        }
-         */
         if (getSecsAlive() - sinceShot > 3) {
             PlayerProjectile e = new PlayerProjectile(this, 180, 50);
             sinceShot = getSecsAlive();
@@ -88,7 +66,8 @@ public class TestGegner extends Entity {
     }
 
     @Override
-    protected void doMove() { // wird jedes Frame aufgerufen
+    protected void doMove() {
+
         if (getSecsAlive()-sinceMoveChange >= 0.5) {
             setMovementDegrees(getMovementDegrees()+ 45.0);
             if (getMovementDegrees() >= 360) {
@@ -100,7 +79,6 @@ public class TestGegner extends Entity {
 
             setAligment();
         }
-
     }
 
     @Override
@@ -110,11 +88,12 @@ public class TestGegner extends Entity {
 
     @Override
     protected void doRemovePolygon() {
-        // wird kurz bevor Polyg. aus Speicher entfernt wird aufgerufen
+
     }
 
     @Override
     protected void doHit(Projectile projectile) {
+
         if (projectile.getSpawner().getClass() != this.getClass()) {
             setLoseLife(projectile);
         }
@@ -122,6 +101,7 @@ public class TestGegner extends Entity {
 
     @Override
     protected void doWorldCollision() {
+
         if (leaveLeft()) {
             setxKoord(getBoundsInParent().getWidth()/2);
             // setMovementDegrees(90);
@@ -139,6 +119,5 @@ public class TestGegner extends Entity {
         if (leaveDown()) {
             setyKoord(GameInformations.WINDOWSIZEY-getBoundsInParent().getHeight()/2);
         }
-
     }
 }
