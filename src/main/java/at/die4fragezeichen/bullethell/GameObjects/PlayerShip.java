@@ -4,9 +4,11 @@ import at.die4fragezeichen.bullethell.GameInformations;
 import at.die4fragezeichen.bullethell.InputController;
 import at.die4fragezeichen.bullethell.Windows.GameWindow;
 import at.die4fragezeichen.bullethell.Windows.Window;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 
 public class PlayerShip extends Entity{
     private double baseSpeed = 0;
@@ -15,6 +17,8 @@ public class PlayerShip extends Entity{
     private final double FIRERATE = 0.5;
     private final double HITREGTIME = 0.2;
     private double timeSinceHit =0;
+    Image ship = new Image(getClass().getResource("/icons/PlayerShip.png").toString());
+    ImagePattern pattern = new ImagePattern(ship, 10, 1, 1, 1, true);
 
     public PlayerShip(Pane GameWindow) {
         super(GameWindow, 0);
@@ -25,26 +29,14 @@ public class PlayerShip extends Entity{
 
 
         getPoints().addAll(
-                30.0,-100.0, // Koordinate 1 Ecke
-                20.0,-70.0,
-                10.0,-55.0,
-                20.0,-60.0,
-                20.0,-40.0,
-                0.0,-20.0,
-                15.0,-20.0,
-                30.0,-30.0,
-                45.0,-20.0,
-                60.0,-20.0,
-                40.0,-40.0,
-                40.0,-60.0,
-                50.0,-55.0,
-                40.0,-70.0,
-                30.0,-100.0
+                 -30.0, -10.0,
+                40.0, -10.0,
+                5.0, -90.0
                 );
 
 
-        setFill(Color.DARKGREY);
-        setStroke(Color.BLACK);
+        setFill(pattern);
+
         setxKoord(GameInformations.WINDOWSIZEX-100);
         setyKoord(GameInformations.WINDOWSIZEY);
         moveObject();
@@ -96,7 +88,7 @@ public class PlayerShip extends Entity{
             }
         }
         if(getSecsAlive()-timeSinceHit>HITREGTIME){
-            setFill(Color.DARKGREY);
+            setFill(pattern);
         }
 
     }

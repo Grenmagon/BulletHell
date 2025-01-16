@@ -13,7 +13,7 @@ public class TestGegner extends Entity {
     private double sinceShot = 0;
     private double timeSinceHit = 0;
     Image ship = new Image(getClass().getResource("/icons/Bossgegner.png").toString());
-    ImagePattern pattern = new ImagePattern(ship, -0.63025, 1.05, 0.8105, 1.025, true);
+    ImagePattern pattern = new ImagePattern(ship, 5, 4, 0.8105, 1.025, true);
 
     public TestGegner(Pane pane) {
         super(pane, 15);

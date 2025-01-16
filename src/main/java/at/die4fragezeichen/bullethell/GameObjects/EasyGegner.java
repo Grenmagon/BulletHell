@@ -12,18 +12,20 @@ public class EasyGegner extends Entity{
     private double sinceMoveChange = 0;
     private double sinceShot = 0;
     private double timeSinceHit = 0;
-    Image ship = new Image(getClass().getResource("/icons/Easygegner.png").toString());
-    ImagePattern pattern = new ImagePattern(ship, 1, 1, 1, 1, true);
+    private final double HITREGTIME = 0.2;
+    Image ship = new Image(getClass().getResource("/icons/EasyGegner.png").toString());
+    ImagePattern pattern = new ImagePattern(ship, -10, 10, 1, 1, true);
 
-    public EasyGegner(Pane pane, int life) {
+    public EasyGegner(Pane pane) {
         super(pane, 3);
 
         getPoints().addAll(
 
-        0.0, -10.0,
-                -10.0, 10.0,
-                0.0, 5.0,
-                10.0, 10.0
+                0.0, 20.0,
+                10.0, 0.0,
+                20.0, -20.0,
+                -20.0, -20.0
+
         );
         System.out.println("Load Ship!");
 
@@ -62,6 +64,9 @@ public class EasyGegner extends Entity{
         if (getSecsAlive() - sinceShot > 3) {
             PlayerProjectile e = new PlayerProjectile(this, 180, 50);
             sinceShot = getSecsAlive();
+        }
+        if(getSecsAlive()-timeSinceHit>HITREGTIME){
+            setFill(pattern);
         }
     }
 

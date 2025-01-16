@@ -3,10 +3,7 @@ package at.die4fragezeichen.bullethell.Windows;
 import at.die4fragezeichen.bullethell.BaseWindow;
 import at.die4fragezeichen.bullethell.GameInformations;
 import at.die4fragezeichen.bullethell.GameLoop;
-import at.die4fragezeichen.bullethell.GameObjects.Entity;
-import at.die4fragezeichen.bullethell.GameObjects.PlayerProjectile;
-import at.die4fragezeichen.bullethell.GameObjects.PlayerShip;
-import at.die4fragezeichen.bullethell.GameObjects.TestGegner;
+import at.die4fragezeichen.bullethell.GameObjects.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -105,7 +102,7 @@ public class GameWindow extends Window{
             wave++;
             if(wave < 5) {
                 for (int i = 0; i < 7; i++) {
-                    enemies.add(new TestGegner(this));
+                    enemies.add(new EasyGegner(this));
                     enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX - 40 * (i + 1));
                     enemies.get(i).setyKoord(40 * (i + 1));
                 }
@@ -113,12 +110,12 @@ public class GameWindow extends Window{
             }
             else if(wave>=5 && wave <8){
                 for (int i = 0; i < 4; i++) { // Easy Gegner
-                    enemies.add(new TestGegner(this));
+                    enemies.add(new EasyGegner(this));
                     enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX - 40 * (i + 1));
                     enemies.get(i).setyKoord(40 * (i + 1));
                 }
                 for(int y= 4;y<8;y++){ //Easy Gegner
-                    enemies.add(new TestGegner(this));
+                    enemies.add(new EasyGegner(this));
                     enemies.get(y).setxKoord(GameInformations.WINDOWSIZEX - 40 * (y+1));
                     enemies.get(y).setyKoord(40 * (8-y));
                 }
@@ -137,7 +134,7 @@ public class GameWindow extends Window{
             if(wave<3) {
                 // da die Medium Gegner einfügen
                 for (int i = 0; i < 3; i++) {
-                        enemies.add(new TestGegner(this));
+                        enemies.add(new MediumGegner(this));
                         enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX - 50 * (i + 1));
                         enemies.get(i).setyKoord(60 * (i + 1));
                 }
@@ -145,12 +142,12 @@ public class GameWindow extends Window{
                 }
             else if (wave>=3 && wave<5) {
                     for (int i = 0; i < 4; i++) { // Easy Gegner
-                        enemies.add(new TestGegner(this));
+                        enemies.add(new EasyGegner(this));
                         enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX - 40 * (i + 1));
                         enemies.get(i).setyKoord(40 * (i + 1));
                     }
                     for(int y= 4;y<8;y++){ //Medium Gegner
-                        enemies.add(new TestGegner(this));
+                        enemies.add(new MediumGegner(this));
                         enemies.get(y).setxKoord(GameInformations.WINDOWSIZEX - 40 * (y+1));
                         enemies.get(y).setyKoord(40 * (8-y));
                     }
@@ -158,12 +155,12 @@ public class GameWindow extends Window{
             } else if (wave >=5 && wave<8) {
                 //da die Medium Gegner einfügen
                     for (int i = 0; i < 4; i++) {
-                        enemies.add(new TestGegner(this));
+                        enemies.add(new MediumGegner(this));
                         enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX - 40 * (i + 1));
                         enemies.get(i).setyKoord(40 * (i + 1));
                     }
                     for(int y= 4;y<8;y++){
-                        enemies.add(new TestGegner(this));
+                        enemies.add(new MediumGegner(this));
                         enemies.get(y).setxKoord(GameInformations.WINDOWSIZEX - 40 * (y+1));
                         enemies.get(y).setyKoord(40 * (8-y));
                     }

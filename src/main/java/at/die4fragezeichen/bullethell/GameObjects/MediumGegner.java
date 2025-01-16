@@ -12,18 +12,18 @@ public class MediumGegner extends Entity{
     private double sinceMoveChange = 0;
     private double sinceShot = 0;
     private double timeSinceHit = 0;
-    Image ship = new Image(getClass().getResource("/icons/Mediumgegner.png").toString());
+    Image ship = new Image(getClass().getResource("/icons/MediumGegner.png").toString());
     ImagePattern pattern = new ImagePattern(ship, -1, 1, 1, 1, true);
 
-    public MediumGegner(Pane pane, int life) {
+    public MediumGegner(Pane pane) {
         super(pane, 7);
 
         getPoints().addAll(
 
-                5.0, -15.0,
-                -15.0, 15.0,
-                5.0, 10.0,
-                15.0, 15.0
+                0.0, 20.0,
+                10.0, 0.0,
+                20.0, -20.0,
+                -20.0, -20.0
         );
         System.out.println("Load Ship!");
 
