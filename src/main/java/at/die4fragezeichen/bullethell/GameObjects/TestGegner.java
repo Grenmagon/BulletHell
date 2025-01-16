@@ -45,7 +45,7 @@ public class TestGegner extends Entity {
 
         );
 
-        System.out.println("Load Ship");
+        System.out.println("Load Ship!");
 
         setFill(pattern);
         setStroke(Color.BLACK); // Farbe für den Rahmen bzw. das Wireframe
