@@ -15,6 +15,8 @@ public class EasyGegner extends Entity{
     private final double HITREGTIME = 0.2;
     Image ship = new Image(getClass().getResource("/icons/EasyGegner.png").toString());
     ImagePattern pattern = new ImagePattern(ship, -10, 10, 1, 1, true);
+    Image shipHit = new Image(getClass().getResource("/icons/EasyGegner - Hit.png").toString());
+    ImagePattern patternHit = new ImagePattern(shipHit, -10, 10, 1, 1, true);
 
     public EasyGegner(Pane pane) {
         super(pane, 3);
@@ -48,7 +50,7 @@ public class EasyGegner extends Entity{
     @Override
     protected void doLoseLife() {
 
-        setFill(Color.BLACK);
+        setFill(patternHit);
         timeSinceHit = getSecsAlive();
         GameInformations.highscore++;
     }

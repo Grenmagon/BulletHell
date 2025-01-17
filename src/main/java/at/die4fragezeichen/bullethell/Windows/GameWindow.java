@@ -100,6 +100,7 @@ public class GameWindow extends Window{
 
         if(GameInformations.difficult == GameInformations.Difficult.Easy) {
             wave++;
+            System.out.println("EASY GEGNRE WELLE " + wave);
             if(wave < 5) {
                 for (int i = 0; i < 7; i++) {
                     enemies.add(new EasyGegner(this));
@@ -131,6 +132,7 @@ public class GameWindow extends Window{
         }
         if(GameInformations.difficult == GameInformations.Difficult.Medium) {
             wave++;
+            System.out.println("MEDIUM GEGNRE WELLE " + wave);
             if(wave<3) {
                 // da die Medium Gegner einfügen
                 for (int i = 0; i < 3; i++) {

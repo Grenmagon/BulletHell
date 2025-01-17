@@ -12,8 +12,11 @@ public class MediumGegner extends Entity{
     private double sinceMoveChange = 0;
     private double sinceShot = 0;
     private double timeSinceHit = 0;
+    private final double HITREGTIME = 0.2;
     Image ship = new Image(getClass().getResource("/icons/MediumGegner.png").toString());
     ImagePattern pattern = new ImagePattern(ship, -1, 1, 1, 1, true);
+    Image shipHit = new Image(getClass().getResource("/icons/MediumGegner-Hit.png").toString());
+    ImagePattern patternHit = new ImagePattern(shipHit, -1, 1, 1, 1, true);
 
     public MediumGegner(Pane pane) {
         super(pane, 7);
@@ -46,7 +49,7 @@ public class MediumGegner extends Entity{
     @Override
     protected void doLoseLife() {
 
-        setFill(Color.BLACK);
+        setFill(patternHit);
         timeSinceHit = getSecsAlive();
         GameInformations.highscore++;
     }
@@ -62,6 +65,9 @@ public class MediumGegner extends Entity{
         if (getSecsAlive() - sinceShot > 3) {
             PlayerProjectile e = new PlayerProjectile(this, 180, 50);
             sinceShot = getSecsAlive();
+        }
+        if(getSecsAlive()-timeSinceHit>HITREGTIME){
+            setFill(pattern);
         }
     }
 

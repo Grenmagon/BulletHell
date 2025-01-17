@@ -19,6 +19,8 @@ public class PlayerShip extends Entity{
     private double timeSinceHit =0;
     Image ship = new Image(getClass().getResource("/icons/PlayerShip.png").toString());
     ImagePattern pattern = new ImagePattern(ship, 10, 1, 1, 1, true);
+    Image shipHit = new Image(getClass().getResource("/icons/PlayerShipHit.png").toString());
+    ImagePattern patternHit = new ImagePattern(shipHit, 10, 1, 1, 1, true);
 
     public PlayerShip(Pane GameWindow) {
         super(GameWindow, 0);
@@ -65,15 +67,14 @@ public class PlayerShip extends Entity{
     @Override
     protected void doLoseLife() {
         // für 1 Sekunde auf Rot stellen
-        setFill(Color.RED);
+        setFill(patternHit);
         timeSinceHit=getSecsAlive();
 
         System.out.println("ich habe ein Leben verloren" + getLife());
     }
 
     @Override
-    protected void doDeath() {
-     Window.setActive("FinalWindow");
+    protected void doDeath() { // Redundant
 
     }
 
@@ -121,7 +122,7 @@ public class PlayerShip extends Entity{
     protected void doRemovePolygon() {
         //Welches auch immer, vermutlich Highscore anzeige und neues Start Menü
         System.out.println("Highscore: " +GameInformations.highscore);
-        Window.setActive("StartWindow"); // das "Endfenster" einblenden
+        Window.setActive("FinalWindow"); // das "Endfenster" einblenden
 
     }
 

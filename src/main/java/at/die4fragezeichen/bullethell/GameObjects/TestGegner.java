@@ -12,8 +12,11 @@ public class TestGegner extends Entity {
     private double sinceMoveChange = 0;
     private double sinceShot = 0;
     private double timeSinceHit = 0;
+    private final double HITREGTIME = 0.2;
     Image ship = new Image(getClass().getResource("/icons/Bossgegner.png").toString());
     ImagePattern pattern = new ImagePattern(ship, 5, 4, 0.8105, 1.025, true);
+    Image shipHit = new Image(getClass().getResource("/icons/Bossgegner-Hit.png").toString());
+    ImagePattern patternHit = new ImagePattern(shipHit, 5, 4, 0.8105, 1.025, true);
 
     public TestGegner(Pane pane) {
         super(pane, 15);
@@ -56,7 +59,7 @@ public class TestGegner extends Entity {
     @Override
     protected void doLoseLife() {
         // eher dazu verwenden, um bspw. Raumschiff blinken zu lassen, wenn es getroffen wird
-        setFill(Color.BLACK);
+        setFill(patternHit);
         timeSinceHit = getSecsAlive();
         GameInformations.highscore++;
 
@@ -84,6 +87,9 @@ public class TestGegner extends Entity {
         if (getSecsAlive() - sinceShot > 3) {
             PlayerProjectile e = new PlayerProjectile(this, 180, 50);
             sinceShot = getSecsAlive();
+        }
+        if(getSecsAlive()-timeSinceHit>HITREGTIME){
+            setFill(pattern);
         }
     }
 
