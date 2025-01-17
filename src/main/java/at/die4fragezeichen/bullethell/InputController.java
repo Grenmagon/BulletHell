@@ -6,6 +6,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class InputController
@@ -37,5 +38,11 @@ public class InputController
         {
             System.out.println(k);
         }
+    }
+    public static void resetPressedKeys()
+    {
+        pressedKeys.remove(KeyCode.SPACE);
+        pressedKeys.remove(KeyCode.A);
+        pressedKeys.remove(KeyCode.D);
     }
 }

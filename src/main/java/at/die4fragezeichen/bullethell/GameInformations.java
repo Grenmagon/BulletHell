@@ -13,8 +13,7 @@ public class GameInformations
     }
 
     public static int highscore =0;
-    public static String playername= "Name";
-    //public static String playername = "";
+    public static String playername= "Player";
 
     public static final double WINDOWSIZEX = 480;
     public static final double WINDOWSIZEY = 480;

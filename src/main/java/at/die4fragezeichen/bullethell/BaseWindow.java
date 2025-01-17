@@ -2,6 +2,9 @@
 package at.die4fragezeichen.bullethell;
 
 
+import at.die4fragezeichen.bullethell.GameObjects.Entity;
+import at.die4fragezeichen.bullethell.GameObjects.GamePolygon;
+import at.die4fragezeichen.bullethell.GameObjects.Projectile;
 import at.die4fragezeichen.bullethell.Windows.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -9,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.scene.text.Font;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class BaseWindow extends Application {
 
@@ -47,5 +51,15 @@ public class BaseWindow extends Application {
     // mit Launch wird der Startbedingung gestartet
     public static void go(String[] args) {
         launch();
+    }
+
+    public void restartGame()
+    {
+        gameWindow.removeListener();
+        GamePolygon.polygons = new ArrayList<>();
+        Entity.entities = new ArrayList<>();
+        Projectile.projectiles = new ArrayList<>();
+        InputController.resetPressedKeys();
+        gameWindow = new GameWindow(gameWindow.getStage(), gameWindow.getBase(),"GameWindow");
     }
 }

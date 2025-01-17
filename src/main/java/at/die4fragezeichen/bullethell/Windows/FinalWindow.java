@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class FinalWindow extends Window {
 
     private Button gameOver;
-    private Button newHighScore;
+    //private Button newHighScore;
     private Label playerName;
     private Label points;
 
@@ -41,7 +41,7 @@ public class FinalWindow extends Window {
         points = new Label(Integer.toString(GameInformations.highscore));// Добавляем заголовок
         points.setStyle("-fx-font-family: 'Horizon'; -fx-font-size: 20px;");
 
-
+        /*
         newHighScore = new Button("New High Score");
         newHighScore.setOnMouseClicked(mouseEvent -> highScoreWindow());
         newHighScore.setMinWidth(210);
@@ -49,9 +49,10 @@ public class FinalWindow extends Window {
                 "-fx-font-size: 20px; " +
                 "-fx-border-color: black; " +      // Чёрная обводка
                 "-fx-border-width: 2px;");        // Толщина обводки
-
-        layout.getChildren().addAll(gameOver, playerName, points,newHighScore);
+        */
+        layout.getChildren().addAll(gameOver, playerName, points/*,newHighScore*/);
         this.getChildren().add(layout);
+
     }
 
     @Override
@@ -72,6 +73,7 @@ public class FinalWindow extends Window {
 
     private void backToStart() {
         Window.setActive("StartWindow");
+        getBase().restartGame();
 
     }
 

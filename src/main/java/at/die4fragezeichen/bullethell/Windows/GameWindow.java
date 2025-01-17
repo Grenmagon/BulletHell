@@ -179,8 +179,9 @@ public class GameWindow extends Window{
         if(GameInformations.difficult == GameInformations.Difficult.Hard) {
             if(wave==0){
                 enemies.add(new TestGegner(this));
-                enemies.get(1).setxKoord(GameInformations.WINDOWSIZEX/2);
-                enemies.get(1).setyKoord(40);
+                enemies.get(0).setxKoord(GameInformations.WINDOWSIZEX/2);
+                enemies.get(0).setyKoord(40);
+                wave++;
             }
             else{
                 Window.setActive("FinalWindow"); // das "Endfenster" einblenden
@@ -218,4 +219,5 @@ public class GameWindow extends Window{
     protected void doNotActive() {
         loop.stop();
     }
+
 }

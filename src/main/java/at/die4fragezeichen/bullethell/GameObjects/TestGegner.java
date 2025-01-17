@@ -13,7 +13,7 @@ public class TestGegner extends Entity {
     private double sinceShot = 0;
     private double timeSinceHit = 0;
     private final double HITREGTIME = 0.2;
-    Image ship = new Image(getClass().getResource("/icons/Bossgegner.png").toString());
+    Image ship = new Image(getClass().getResource("/icons/BossGegner.png").toString());
     ImagePattern pattern = new ImagePattern(ship, 5, 4, 0.8105, 1.025, true);
     Image shipHit = new Image(getClass().getResource("/icons/Bossgegner-Hit.png").toString());
     ImagePattern patternHit = new ImagePattern(shipHit, 5, 4, 0.8105, 1.025, true);
@@ -47,7 +47,8 @@ public class TestGegner extends Entity {
         moveObject(); // dadurch setze ich Objekt auf entspr. Koordinaten, die gesetzt sind
 
         setMovementDegrees(90); // Objekt bewegt sich nach rechts
-        setAlignmentDegrees(getMovementDegrees()); //Raumschiff soll sich in Movementrichtung drehen
+        //setAlignmentDegrees(getMovementDegrees()); //Raumschiff soll sich in Movementrichtung drehen
+        setAlignmentDegrees(180);
         setAligment(); // Raumschiff dreht sich aktiv
         if (GameInformations.difficult == GameInformations.Difficult.Easy) { // GameInformations enthält alle relevanten Infos
             setSpeed(50);
@@ -85,7 +86,9 @@ public class TestGegner extends Entity {
         }
          */
         if (getSecsAlive() - sinceShot > 3) {
-            PlayerProjectile e = new PlayerProjectile(this, 180, 50);
+            PlayerProjectile a = new PlayerProjectile(this, 180, 50);
+            PlayerProjectile b = new PlayerProjectile(this, 135, 50);
+            PlayerProjectile c = new PlayerProjectile(this, 225, 50);
             sinceShot = getSecsAlive();
         }
         if(getSecsAlive()-timeSinceHit>HITREGTIME){
@@ -95,6 +98,7 @@ public class TestGegner extends Entity {
 
     @Override
     protected void doMove() { // wird jedes Frame aufgerufen
+        /*
         if (getSecsAlive()-sinceMoveChange >= 0.5) {
             setMovementDegrees(getMovementDegrees()+ 45.0);
             if (getMovementDegrees() >= 360) {
@@ -106,6 +110,8 @@ public class TestGegner extends Entity {
 
             setAligment();
         }
+
+         */
 
     }
 
@@ -128,14 +134,15 @@ public class TestGegner extends Entity {
 
     @Override
     protected void doWorldCollision() {
+
         if (leaveLeft()) {
             setxKoord(getBoundsInParent().getWidth()/2);
-            // setMovementDegrees(90);
+             setMovementDegrees(90);
         }
 
         if (leaveRight()) {
             setxKoord(GameInformations.WINDOWSIZEX-getBoundsInParent().getWidth()/2);
-            // setMovementDegrees(270);
+             setMovementDegrees(270);
         }
 
         if (leaveUp()) {
@@ -145,6 +152,8 @@ public class TestGegner extends Entity {
         if (leaveDown()) {
             setyKoord(GameInformations.WINDOWSIZEY-getBoundsInParent().getHeight()/2);
         }
+
+
 
     }
 }

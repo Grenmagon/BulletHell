@@ -124,6 +124,7 @@ public class PlayerShip extends Entity{
         System.out.println("Highscore: " +GameInformations.highscore);
         Window.setActive("FinalWindow"); // das "Endfenster" einblenden
 
+
     }
 
     @Override

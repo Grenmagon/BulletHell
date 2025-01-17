@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 //in den Szenen sind die sogenannten Panes >> in diesen können weitere Panes sein und z.B.: Buttons etc.
 public abstract class Window extends Pane
@@ -56,6 +57,17 @@ public abstract class Window extends Pane
     private void addListener(Window signal)
     {
         listeners.add(signal);
+    }
+
+    public void removeListener()
+    {
+        Iterator<Window> it = listeners.iterator();
+        while (it.hasNext())
+        {
+            Window w = it.next();
+            if (w == this)
+                it.remove();
+        }
     }
 
     // Konstruktor >> Name muss eindeutig sein
@@ -110,4 +122,5 @@ public abstract class Window extends Pane
     }
 
     abstract protected void doNotActive();
+
 }

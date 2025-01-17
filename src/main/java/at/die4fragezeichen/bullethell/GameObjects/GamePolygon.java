@@ -158,7 +158,7 @@ public abstract class GamePolygon extends Polygon
     public void setAligment()
     {
         doAligment();
-        setRotate(getAlignmentDegrees());
+        setRotate(getAlignmentDegrees() + 180);
     }
     // was soll passierren wenns gedreht ist?
     abstract protected void doAligment();
