@@ -37,7 +37,7 @@ public abstract class GameLoop extends AnimationTimer
     }
     abstract public void doFrame();
 
-    private void testSec(long now)
+    private void testSec(long now)  //War für testzwecke, um zu checken ob die gewünschte zeit vergangen ist
     {
         if (frameCount == GameInformations.FPS)
         {

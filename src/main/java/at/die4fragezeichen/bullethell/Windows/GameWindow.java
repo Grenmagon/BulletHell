@@ -24,10 +24,9 @@ public class GameWindow extends Window{
 
 
     public GameWindow(Stage stage, BaseWindow base, String name) {
-        super(stage, base, name);
+        super(stage, base, name); // Ruft den Konstruktor von Window auf
         GameInformations.difficult = GameInformations.Difficult.Easy;
         firstPlayer= new PlayerShip(this);
-        double playerTimeAlive = firstPlayer.getSecsAlive();
 
         enemies= new ArrayList<>();
 
@@ -93,6 +92,7 @@ public class GameWindow extends Window{
             }
         };
     }
+
     private void levelSystem() {
         if (!enemies.isEmpty())
             return;
@@ -104,7 +104,7 @@ public class GameWindow extends Window{
             if(wave < 5) {
                 for (int i = 0; i < 7; i++) {
                     enemies.add(new EasyGegner(this));
-                    enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX - 80 * (i*0.5)-100);
+                    enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX - 80 * (i*0.7)-85);
                     enemies.get(i).setyKoord(40 * (i + 1));
                 }
                 System.out.println("Das ist Wave: " + wave);
@@ -112,12 +112,12 @@ public class GameWindow extends Window{
             else if(wave>=5 && wave <8){
                 for (int i = 0; i < 4; i++) { // Easy Gegner
                     enemies.add(new EasyGegner(this));
-                    enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX - 40 * (i + 1)-50);
+                    enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX - 40 * (i + 1)-70);
                     enemies.get(i).setyKoord(40 * (i + 1));
                 }
                 for(int y= 4;y<8;y++){ //Easy Gegner
                     enemies.add(new EasyGegner(this));
-                    enemies.get(y).setxKoord(GameInformations.WINDOWSIZEX - 40 * (y+1)-50);
+                    enemies.get(y).setxKoord(GameInformations.WINDOWSIZEX - 40 * (y+1)-70);
                     enemies.get(y).setyKoord(40 * (8-y));
                 }
             }
@@ -140,7 +140,7 @@ public class GameWindow extends Window{
                 // da die Medium Gegner einfügen
                 for (int i = 0; i < 3; i++) {
                         enemies.add(new MediumGegner(this));
-                        enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX/4 * (i+0.5));
+                        enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX/4 * (i*0.5) + 140);
                         enemies.get(i).setyKoord(60 * (i + 1));
                 }
 
@@ -148,12 +148,12 @@ public class GameWindow extends Window{
             else if (wave>=3 && wave<5) {
                     for (int i = 0; i < 4; i++) { // Easy Gegner
                         enemies.add(new EasyGegner(this));
-                        enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX-60 * (i + 1));
+                        enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX - 60 * (i * 0.7) -160);
                         enemies.get(i).setyKoord(40 * (i + 1));
                     }
                     for(int y= 4;y<8;y++){ //Medium Gegner
                         enemies.add(new MediumGegner(this));
-                        enemies.get(y).setxKoord(GameInformations.WINDOWSIZEX - 60 * (y+1));
+                        enemies.get(y).setxKoord(GameInformations.WINDOWSIZEX - 60 * (y*0.7) - 100);
                         enemies.get(y).setyKoord(40 * (8-y));
                     }
 
@@ -161,12 +161,12 @@ public class GameWindow extends Window{
                 //da die Medium Gegner einfügen
                     for (int i = 0; i < 4; i++) {
                         enemies.add(new MediumGegner(this));
-                        enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX - 60 * (i + 1));
+                        enemies.get(i).setxKoord(GameInformations.WINDOWSIZEX - 60 * (i * 0.7) -175);
                         enemies.get(i).setyKoord(40 * (i + 1));
                     }
                     for(int y= 4;y<8;y++){
                         enemies.add(new MediumGegner(this));
-                        enemies.get(y).setxKoord(GameInformations.WINDOWSIZEX - 60 * (y+1));
+                        enemies.get(y).setxKoord(GameInformations.WINDOWSIZEX - 60 * (y*0.7) - 100);
                         enemies.get(y).setyKoord(40 * (8-y));
                     }
 

@@ -14,6 +14,7 @@ public class GameInformations
 
     public static int highscore =0;
     public static String playername= "Player";
+    public static final String DEVMODE = "DEVMODE";
 
     public static final double WINDOWSIZEX = 480;
     public static final double WINDOWSIZEY = 480;

@@ -50,11 +50,15 @@ public class TestGegner extends Entity {
         //setAlignmentDegrees(getMovementDegrees()); //Raumschiff soll sich in Movementrichtung drehen
         setAlignmentDegrees(180);
         setAligment(); // Raumschiff dreht sich aktiv
+        setSpeed(200);
+        /*
         if (GameInformations.difficult == GameInformations.Difficult.Easy) { // GameInformations enthält alle relevanten Infos
             setSpeed(50);
         } else {
             setSpeed(150);
         }
+
+         */
     }
 
     @Override
@@ -127,7 +131,8 @@ public class TestGegner extends Entity {
 
     @Override
     protected void doHit(Projectile projectile) {
-        if (projectile.getSpawner().getClass() != this.getClass()) {
+        //if (projectile.getSpawner().getClass() != this.getClass()) {
+        if(projectile.getSpawner() instanceof PlayerShip) {
             setLoseLife(projectile);
         }
     }

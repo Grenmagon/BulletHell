@@ -39,11 +39,15 @@ public class MediumGegner extends Entity{
         setMovementDegrees(90); // Objekt bewegt sich nach rechts
         setAlignmentDegrees(getMovementDegrees()); //Raumschiff soll sich in Movementrichtung drehen
         setAligment(); // Raumschiff dreht sich aktiv
+        setSpeed(150);
+        /*
         if (GameInformations.difficult == GameInformations.Difficult.Easy) { // GameInformations enthält alle relevanten Infos
             setSpeed(50);
         } else {
             setSpeed(150);
         }
+
+         */
     }
 
     @Override
@@ -100,7 +104,8 @@ public class MediumGegner extends Entity{
     @Override
     protected void doHit(Projectile projectile) {
 
-        if (projectile.getSpawner().getClass() != this.getClass()) {
+        //if (projectile.getSpawner().getClass() != this.getClass()) {
+        if(projectile.getSpawner() instanceof PlayerShip) {
             setLoseLife(projectile);
         }
     }

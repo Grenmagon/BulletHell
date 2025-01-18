@@ -84,7 +84,18 @@ public class PlayerShip extends Entity{
         if ( InputController.getPressedKeys().contains(KeyCode.SPACE))
         {
             if (getSecsAlive() - timeSinceShot > FIRERATE) {// Timer für verzögerung zwischen schüssen
-                PlayerProjectile pp = new PlayerProjectile(this, 0, 200);
+                if (GameInformations.playername.equals(GameInformations.DEVMODE))
+                {
+                    for(Entity e: Entity.entities)
+                    {
+                        if (!(e instanceof PlayerShip))
+                            e.setRemovePolygon();
+                    }
+                }
+                else
+                {
+                    PlayerProjectile pp = new PlayerProjectile(this, 0, 200);
+                }
                 timeSinceShot = getSecsAlive();
             }
         }
