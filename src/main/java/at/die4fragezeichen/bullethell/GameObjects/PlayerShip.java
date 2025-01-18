@@ -53,7 +53,7 @@ public class PlayerShip extends Entity{
             setLife(20);
             setSpeed(350);
         } else if (GameInformations.difficult == GameInformations.Difficult.Hard) {
-            setLife(10);
+            setLife(3);
             setSpeed(200);
         }
         else

@@ -85,7 +85,7 @@ public class TestGegner extends Entity {
             PlayerProjectile e = new PlayerProjectile(this, 180, 50);
         }
          */
-        if (getSecsAlive() - sinceShot > 3) {
+        if (getSecsAlive() - sinceShot > 1) {
             PlayerProjectile a = new PlayerProjectile(this, 180, 50);
             PlayerProjectile b = new PlayerProjectile(this, 135, 50);
             PlayerProjectile c = new PlayerProjectile(this, 225, 50);
