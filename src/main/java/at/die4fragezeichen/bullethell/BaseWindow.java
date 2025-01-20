@@ -45,6 +45,7 @@ public class BaseWindow extends Application {
         finalWindow = new FinalWindow(stage,this,"FinalWindow");
         //gameWindow.setActive();
         startWindow.setActive();
+        stage.setResizable(false);
         stage.show();
     }
 
