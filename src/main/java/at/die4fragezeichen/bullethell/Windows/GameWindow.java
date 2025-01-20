@@ -89,6 +89,8 @@ public class GameWindow extends Window{
                 highscoreLabel.setText("Highscore: "+GameInformations.highscore);
                 levelLabel.setText("Level: "+GameInformations.difficult+"/ Wave: "+wave);
                 playerLife.setText("Lifes: "+firstPlayer.getLife());
+                playernameLabel.setText("playername: " +GameInformations.playername);
+
             }
         };
     }
